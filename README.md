@@ -10,7 +10,7 @@ chmod u+x setup.sh
 ./setup.sh myredirector.ca myteamserver.com http
 ```
 
-## Sample HTTP config generated
+## Sample of HTTP config generated
 ```
 server {
     listen       80;
