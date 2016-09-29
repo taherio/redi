@@ -4,6 +4,9 @@ Automated reverse proxy redirectors
 ## How to use
 
 ```
+git clone https://github.com/taherio/redi.git
+cd redi
+chmod u+x setup.sh
 ./setup.sh myredirector.ca myteamserver.com http
 ```
 
