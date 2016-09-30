@@ -8,6 +8,9 @@ Automated reverse proxy redirectors setup, compatible with CobaltStrike beacon.
 - Fine control over HTTP headers by customizing nginx configuration. 
 - SSL offloading possible, so you can have SSL beacon delivered to a backend HTTP listener !!
 - Allows for multiple valid HTTPS redirectors setup
+- Adds original source ip to user-agent header for easy tracking. 
+
+![alt tag](https://github.com/taherio/random/raw/38641d74f0628a26142b121e62b393e96cac156a/image.png)
 
 ## How to use
 
