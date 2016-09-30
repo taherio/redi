@@ -4,9 +4,10 @@ echo [+] updating
 apt-get update
 
 echo [+] installing nginx
-apt-get install nginx
+apt-get --assume-yes install nginx
 
 echo [+] starting configuration
+service nginx stop
 rm /etc/nginx/sites-enabled/default
 
 CONFIGFILE="redirector.conf"
@@ -20,7 +21,7 @@ then
  wget https://dl.eff.org/certbot-auto
  chmod a+x certbot-auto
  echo [+] generating certifcates
- ./certbot-auto certonly --standalone -d $1 --agree-tos --register-unsafely-without-email
+ ./certbot-auto certonly --standalone -d $1 --agree-tos --register-unsafely-without-email --non-interactive
 fi
 
 echo [+] generating config file
