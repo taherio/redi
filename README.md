@@ -20,9 +20,9 @@ cd redi
 chmod u+x setup.sh
 ./setup.sh <redirector domain> <teamserver ip/domain> <http/https>
 ```
-### Example For setting up HTTP redirector
+### Example For setting up HTTPS redirector
 ```
-./setup.sh myredirector.ca myteamserver.com http
+./setup.sh myredirector.ca myteamserver.com https
 ```
 
 
