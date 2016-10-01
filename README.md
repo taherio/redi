@@ -26,17 +26,21 @@ chmod u+x setup.sh
 ```
 
 
-## Sample of HTTP config generated
+## Sample of HTTPS config generated
 ```
 server {
-    listen       80;
-    server_name  myredirector.ca;
-     
-    # proxy to Team server
+    listen 443 ssl;
+    server_name myredirector.ca;
+
+    ssl on;
+    ssl_certificate 	/etc/letsencrypt/live/www.you_redirector_domain_here.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.you_redirector_domain_here.com/privkey.pem;
+
     location / {
-        proxy_pass         http://myteamserver.com:80/;
+        proxy_pass         https://myteamserver.com:443/;
         proxy_redirect     off;
         proxy_set_header   Host             $host;
+        proxy_set_header   "User-Agent" "${http_user_agent} - Original IP ${remote_addr}";
     }
 }
 ```
