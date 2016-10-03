@@ -24,8 +24,8 @@ With some configuration tweaking you can even SSL offload beacon's HTTPS traffic
 ```
 git clone https://github.com/taherio/redi.git
 cd redi
-chmod u+x setup.sh
-./setup.sh <redirector domain> <teamserver ip/domain> <http/https>
+chmod u+x redi.sh
+./redi.sh <redirector domain> <teamserver ip/domain> <http/https>
 ```
 ### Example For setting up HTTPS redirector
 ```
