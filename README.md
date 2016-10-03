@@ -29,7 +29,7 @@ chmod u+x redi.sh
 ```
 ### Example For setting up HTTPS redirector
 ```
-./setup.sh myredirector.ca myteamserver.com https
+./redi.sh myredirector.ca myteamserver.com https
 ```
 
 
