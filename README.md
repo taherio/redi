@@ -40,8 +40,8 @@ server {
     server_name myredirector.ca;
 
     ssl on;
-    ssl_certificate 	/etc/letsencrypt/live/www.you_redirector_domain_here.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/www.you_redirector_domain_here.com/privkey.pem;
+    ssl_certificate 	/etc/letsencrypt/live/myredirector.ca/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/myredirector.ca/privkey.pem;
 
     location / {
         proxy_pass         https://myteamserver.com:443/;
