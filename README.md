@@ -27,11 +27,16 @@ cd redi
 chmod u+x redi.sh
 ./redi.sh <redirector domain> <teamserver ip/domain> <http/https>
 ```
+
+### Example For setting up HTTPS redirector with multiple domains 
+```
+./redi.sh first.myredirector.ca,second.myredirector.ca,third.myredirector.ca myteamserver.com https
+```
+
 ### Example For setting up HTTPS redirector
 ```
 ./redi.sh myredirector.ca myteamserver.com https
 ```
-
 
 ## Sample of HTTPS config generated
 ```
