@@ -1,5 +1,7 @@
 #!/bin/bash
 
+now=$(date +"%s")
+
 echo [+] updating
 apt-get update
 
@@ -8,9 +10,11 @@ apt-get --assume-yes install nginx
 
 echo [+] starting configuration
 service nginx stop
-rm /etc/nginx/sites-enabled/default
+mv /etc/nginx/sites-enabled/ /etc/nginx/sites-enabled_bak_${now}/
+mkdir /etc/nginx/sites-enabled
 
 CONFIGFILE="redirector.conf"
+DOMAINS=( $(echo $1 | tr ',' ' ') )
 
 #for https redirectors
 if [ "$3" = "https" ]
@@ -21,11 +25,24 @@ then
  wget https://dl.eff.org/certbot-auto
  chmod a+x certbot-auto
  echo [+] generating certifcates
- ./certbot-auto certonly --standalone -d $1 --agree-tos --register-unsafely-without-email --non-interactive
+ mv /etc/letsencrypt/ /etc/letsencrypt_bak_${now}/
+ DOMAINS=( $(echo $1 | tr ',' ' ') )
+ for DOMAIN in "${DOMAINS[@]}"
+ do
+  ./certbot-auto certonly --standalone -d $DOMAIN --agree-tos --register-unsafely-without-email --non-interactive --expand
+ done
 fi
 
-echo [+] generating config file
-sed 's/www.you_redirector_domain_here.com/'$1'/g; s/www.your_team_server_domain_here.com/'$2'/g' $CONFIGFILE > /etc/nginx/sites-enabled/redirector.conf
+for DOMAIN in "${DOMAINS[@]}"
+do
+ if [ "$3" = "https" ] && [ ! -f /etc/letsencrypt/live/$DOMAIN/cert.pem ]; then
+  echo -e "\e[91m[-] Certificate generation failed for domain $DOMAIN \033[0m"
+  echo -e "\e[91m[-] Will not generate nginx config for this domain \033[0m"
+ else
+  echo [+] generating config file for $DOMAIN
+  sed 's/www.you_redirector_domain_here.com/'$DOMAIN'/g; s/www.your_team_server_domain_here.com/'$2'/g' $CONFIGFILE > /etc/nginx/sites-enabled/redirector-${DOMAIN}.conf
+ fi
+done
 
 echo [+] starting nginx
 service nginx start
