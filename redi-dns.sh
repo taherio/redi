@@ -17,7 +17,7 @@ then
   echo [+] generating config file for teamserver $1
   CONFIGFILE="redirector-dns.conf"
   sed 's/www.your_team_server_domain_here.com/'$1'/g' $CONFIGFILE > /etc/dnsmasq.conf
-  cp redirector-dns-defaults.conf > /etc/default/dnsmasq
+  cp redirector-dns-defaults.conf /etc/default/dnsmasq
   echo [+] starting dnsmasq
   service dnsmasq start
 
