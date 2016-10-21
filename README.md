@@ -9,13 +9,14 @@ With some configuration tweaking you can even SSL offload beacon's HTTPS traffic
 
 
 ## Advantages
-- Auto SSL setup for HTTPS using letsencrypt certbot
-- Auto nginx and dnsmasq configuration
-- Access logs for HTTP redirector (default nginx logs)
+- Auto SSL setup for HTTPS using letsencrypt certbot.
+- Auto nginx and dnsmasq configuration.
+- Access logs for HTTP redirector (default nginx logs).
 - Fine control over HTTP headers by customizing nginx configuration. 
 - Allows for multiple valid HTTPS redirectors setup
 - Adds original source ip to user-agent header for easy tracking. 
-- SSL offloading possible, so you can have SSL beacon delivered to a backend HTTP listener !! (needs special setup)
+- No port bending needed.
+- SSL offloading possible, so you can have SSL beacon delivered to a backend HTTP listener !! (needs special setup).
 
 ![alt tag](https://github.com/taherio/random/raw/38641d74f0628a26142b121e62b393e96cac156a/image.png)
 
