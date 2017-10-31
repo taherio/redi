@@ -15,7 +15,7 @@ mkdir /etc/nginx/sites-enabled
 
 CONFIGFILE="redirector-ssl-stealth.conf"
 DOMAINS=( $(echo $1 | tr ',' ' ') )
-REGEX=$(echo $(cat $4 | grep uri | cut -d '"' -f2) | sed 's/\//\\\//g' | sed 's/\ /\|/g')
+REGEX=$(echo $(cat $4 | grep uri | cut -d '"' -f2) | sed 's/\//\\\\\\\//g' | sed 's/\ /\|/g')
 
 echo [+] downloading certbot to generate certificates
 wget https://dl.eff.org/certbot-auto
